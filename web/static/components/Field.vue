@@ -2,7 +2,7 @@
 
   <div class="Field">
     <div v-for="player in players">
-      <Player :player="player"></Player>
+      <Player :player="player" :me="isMe(player)"></Player>
       <hr/>
     </div>
     <div class="Preview">
@@ -24,13 +24,18 @@ export default {
     Card
   },
   computed: {
-    players() {
+    players () {
       return this.$store.state.players
     },
-    preview() {
+    preview () {
       return this.$store.state.preview
     }
   },
+  methods: {
+    isMe (player) {
+      return this.$store.state.me === player.name
+    }
+  }
 }
 </script>
 

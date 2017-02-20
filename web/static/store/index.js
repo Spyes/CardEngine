@@ -1,36 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import state from './state'
 import mutations from './mutations'
 
 Vue.use(Vuex)
 
-const state = {
-  preview: {},
-  players: [
-    {
-      name: 'spyes',
-      hand: [
-        {
-          name: 'Swamp'
-        },
-        {
-          name: 'Mountain'
-        }
-      ]
-    },
-    {
-      name: 'inn0',
-      hand: [
-        {
-          name: 'Island'
-        }
-      ]
-    }
-  ]
-}
-
 export default new Vuex.Store({
+  strict: true,
   state,
   mutations,
   plugins: []

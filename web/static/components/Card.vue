@@ -20,7 +20,7 @@ export default {
     }
   },
   methods: {
-    mouseOver() {
+    mouseOver () {
       const { onMouseOver, card } = this
       onMouseOver(card)
     }

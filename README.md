@@ -1,4 +1,4 @@
-# Magicvue
+# Card Engine
 
 To start your Phoenix app:
 

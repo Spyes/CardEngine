@@ -1,9 +1,11 @@
 export default {
   me: 'spyes',
   preview: {},
+  graveyard: [],
   players: [
     {
       name: 'spyes',
+      battlefield: [],
       deck: [
         { name: 'Island' }
       ],
@@ -18,6 +20,7 @@ export default {
     },
     {
       name: 'inn0',
+      battlefield: [],
       deck: [
         { name: 'Mountain' }
       ],

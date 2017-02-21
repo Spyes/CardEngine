@@ -4,8 +4,9 @@
     <div class="name">
       Player: {{ player.name }}
     </div>
+    <Battlefield :battlefield="player.battlefield" />
     <Deck :onClick="onClickDeck" :deck="player.deck" />
-    <Hand :hand="player.hand" :show="me" />
+    <Hand :hand="player.hand" :show="me" :onClickCard="onClickCardInHand" />
   </div>
   
 </template>
@@ -13,12 +14,14 @@
 <script>
 import Hand from './Hand.vue'
 import Deck from './Deck.vue'
+import Battlefield from './Battlefield.vue'
 
 export default {
   name: 'Player',
   components: {
     Hand,
-    Deck
+    Deck,
+    Battlefield
   },
   props: {
     player: {
@@ -36,6 +39,14 @@ export default {
       $store.commit({
         type: 'onClickDeck',
         player
+      })
+    },
+    onClickCardInHand (card) {
+      const { $store, player } = this
+      $store.commit({
+        type: 'castCard',
+        player,
+        card
       })
     }
   }

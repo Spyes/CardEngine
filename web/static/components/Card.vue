@@ -1,6 +1,6 @@
 <template>
   
-  <div class="Card" v-on:mouseover="mouseOver">
+  <div class="Card" v-on:mouseover="mouseOver" v-on:click="click">
     {{ card.name }}
   </div>
   
@@ -17,12 +17,20 @@ export default {
     onMouseOver: {
       type: Function,
       default: () => {}
+    },
+    onClick: {
+      type: Function,
+      default: () => {}
     }
   },
   methods: {
     mouseOver () {
       const { onMouseOver, card } = this
       onMouseOver(card)
+    },
+    click () {
+      const { onClick, card } = this
+      onClick(card)
     }
   }
 }

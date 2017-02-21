@@ -6,6 +6,7 @@
       <Card
           v-for="card in hand"
           :card="card"
+          :onClick="clickCard"
           :onMouseOver="onMouseOver"
           v-on:mouseout.native="onMouseOut"
       />
@@ -30,6 +31,10 @@ export default {
     show: {
       type: Boolean,
       default: false
+    },
+    onClickCard: {
+      type: Function,
+      default: () => {}
     }
   },
   computed: {
@@ -49,6 +54,9 @@ export default {
         type: 'setPreview',
         card: {}
       })
+    },
+    clickCard (card) {
+      this.onClickCard(card)
     }
   }
 }

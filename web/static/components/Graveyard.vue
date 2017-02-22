@@ -1,7 +1,7 @@
 <template>
 
   <div class="Graveyard">
-    Graveyard
+    Graveyard: {{ topCard.name }}
   </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
     graveyard: {
       type: Array,
       default: []
+    }
+  },
+  computed: {
+    topCard () {
+      return this.graveyard[this.graveyard.length - 1] || {}
     }
   }
 }

@@ -17,11 +17,9 @@
 //
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
-
-// import socket from "./socket"
-
 import Vue from 'vue'
 import store from '../store'
+import connectChannel, { channel } from './sock'
 
 import Field from '../components/Field.vue'
 
@@ -34,3 +32,6 @@ new Vue({
     return createElement(Field, {})
   }
 })
+
+connectChannel()
+channel.on("new_msg", (msg) => { store.commit(msg.payload) })

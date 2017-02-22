@@ -6,6 +6,7 @@
         v-for="card in battlefield"
         :card="card"
         :onMouseOver="onMouseOver"
+        :onClick="onClickCard"
         v-on:mouseout.native="onMouseOut"
       />
     ]
@@ -23,6 +24,10 @@ export default {
     battlefield: {
       type: Array,
       default: []
+    },
+    onClickCard: {
+      type: Function,
+      default: () => {}
     }
   },
   methods: {

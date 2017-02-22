@@ -4,7 +4,8 @@
     <div class="name">
       Player: {{ player.name }}
     </div>
-    <Battlefield :battlefield="player.battlefield" />
+    <Battlefield :battlefield="player.battlefield" :onClickCard="onClickCardInBattlefield" />
+    <Graveyard :graveyard="player.graveyard" />
     <Deck :onClick="onClickDeck" :deck="player.deck" />
     <Hand :hand="player.hand" :show="me" :onClickCard="onClickCardInHand" />
   </div>
@@ -15,13 +16,16 @@
 import Hand from './Hand.vue'
 import Deck from './Deck.vue'
 import Battlefield from './Battlefield.vue'
+import Graveyard from './Graveyard.vue'
+import commit from '../js/actions'
 
 export default {
   name: 'Player',
   components: {
     Hand,
     Deck,
-    Battlefield
+    Battlefield,
+    Graveyard
   },
   props: {
     player: {
@@ -35,16 +39,27 @@ export default {
   },
   methods: {
     onClickDeck () {
-      const { $store, player } = this
-      $store.commit({
+      const { player } = this
+      if (!this.me) return
+      commit({
         type: 'onClickDeck',
         player
       })
     },
     onClickCardInHand (card) {
-      const { $store, player } = this
-      $store.commit({
+      const { player } = this
+      if (!this.me) return
+      commit({
         type: 'castCard',
+        player,
+        card
+      })
+    },
+    onClickCardInBattlefield (card) {
+      const { player } = this
+      if (!this.me) return
+      commit({
+        type: 'moveToGraveyard',
         player,
         card
       })

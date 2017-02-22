@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import Player from './Player.vue'
 import Card from './Card.vue'
 

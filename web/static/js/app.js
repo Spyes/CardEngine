@@ -21,15 +21,15 @@ import Vue from 'vue'
 import store from '../store'
 import connectChannel, { channel } from './sock'
 
-import Field from '../components/Field.vue'
+import Game from '../components/Game.vue'
 
-Vue.component('Field', Field)
+Vue.component('Game', Game)
 
 new Vue({
   el: '#app',
   store,
   render(createElement) {
-    return createElement(Field, {})
+    return createElement(Game, {})
   }
 })
 

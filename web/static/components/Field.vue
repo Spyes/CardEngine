@@ -24,10 +24,10 @@ export default {
   },
   computed: {
     players () {
-      return this.$store.state.players
+      return this.$store.state.game.players
     },
     preview () {
-      return this.$store.state.preview
+      return this.$store.state.game.preview
     }
   },
   methods: {
